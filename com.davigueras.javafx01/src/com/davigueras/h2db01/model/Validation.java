@@ -1,4 +1,4 @@
-package model;
+package com.davigueras.h2db01.model;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -54,9 +54,8 @@ public class Validation {
 	
 	public static boolean textFieldIsDouble(TextField textField) {
 		boolean valid = false;
-		double input = 0;
 		try {
-			input = Double.parseDouble(textField.getText());
+			Double.parseDouble(textField.getText());
 			valid = true;			
 		} catch (NumberFormatException e) {
 			valid = false;
@@ -66,7 +65,7 @@ public class Validation {
 	
 	public static boolean textFieldIsDouble(TextField textField, Label label, String message) {
 		
-		// a todo esto habra que asegurarse que los decimales funcionan segun la configuracion regional española
+		// a todo esto habra que asegurarse que los decimales funcionan segun la configuracion regional espa??????ola
 		// no hace falta que sea dinamico, simplemente que sea la que nos conviene
 		
 		boolean valid = false;
@@ -85,9 +84,8 @@ public class Validation {
 	
 	public static boolean textFieldIsInteger(TextField textField) {
 		boolean valid = false;
-		int input = 0;
 		try {
-			input = Integer.parseInt(textField.getText());
+			Integer.parseInt(textField.getText());
 			valid = true;			
 		} catch (NumberFormatException e) {
 			valid = false;

@@ -1,4 +1,4 @@
-package h2;
+package com.davigueras.h2db01;
 
 import java.sql.DriverManager;
 import java.sql.ResultSet;

@@ -1,9 +1,10 @@
-package controller;
+package com.davigueras.javafx01.controller;
 
 import java.sql.Date;
 
-import model.Product;
-import model.Validation;
+import com.davigueras.h2db01.model.Product;
+import com.davigueras.h2db01.model.Validation;
+
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -113,7 +114,7 @@ public class MainController {
 		fieldCost.getStyleClass().remove("ok");
 		fieldProductionMinutes.getStyleClass().remove("error");	
 		fieldProductionMinutes.getStyleClass().remove("ok");
-		labelError.setText("Acción cancelada.");			
+		labelError.setText("Acci??n cancelada.");			
 		System.out.println("Action canceled.");
 	}	
 	@FXML
@@ -130,15 +131,15 @@ public class MainController {
 		case "new":
 			//estan en orden inverso para que, dado que se comprueban todos, aparezcan en ordn correcto
 			validProductionMinutes = Validation.textFieldNotEmpty(fieldProductionMinutes, labelError, "El campo es obligatorio.") 
-					&& Validation.textFieldIsInteger(fieldProductionMinutes, labelError, "El valor introducido no es un número entero válido.");			
+					&& Validation.textFieldIsInteger(fieldProductionMinutes, labelError, "El valor introducido no es un n??mero entero v??lido.");			
 			validCost = Validation.textFieldNotEmpty(fieldCost, labelError, "El campo es obligatorio.") 
-					&& Validation.textFieldIsDouble(fieldCost, labelError, "El valor introducido no es un número decimal válido.");			
+					&& Validation.textFieldIsDouble(fieldCost, labelError, "El valor introducido no es un n??mero decimal v??lido.");			
 			// o hace falta decir que en caso de la fecha va a hacer falta mucha chicha para verificar que la fecha es buena
-			// desentrañar el misterio de si Date o Calendar y entender que es mejor...
+			// desentra??ar el misterio de si Date o Calendar y entender que es mejor...
 			validIssueDate = Validation.textFieldNotEmpty(fieldIssueDate, labelError, "El campo es obligatorio.");	
 			validName = Validation.textFieldNotEmpty(fieldName, labelError, "El campo es obligatorio.");			
 			validRef = Validation.textFieldNotEmpty(fieldRef, labelError, "El campo es obligatorio.")
-					&& Validation.textFieldOnlyAlphaNumeric(fieldRef, labelError, "Solo se permiten carácteres alfanuméricos.");			
+					&& Validation.textFieldOnlyAlphaNumeric(fieldRef, labelError, "Solo se permiten car??cteres alfanum??ricos.");			
 
 			if (validRef && validName && validIssueDate && validCost && validProductionMinutes) {
 				fieldRef.getStyleClass().remove("error");	
@@ -173,15 +174,15 @@ public class MainController {
 		case "edit":
 			//estan en orden inverso para que, dado que se comprueban todos, aparezcan en ordn correcto
 			validProductionMinutes = Validation.textFieldNotEmpty(fieldProductionMinutes, labelError, "El campo es obligatorio.") 
-					&& Validation.textFieldIsInteger(fieldProductionMinutes, labelError, "El valor introducido no es un número entero válido.");			
+					&& Validation.textFieldIsInteger(fieldProductionMinutes, labelError, "El valor introducido no es un n??mero entero v??lido.");			
 			validCost = Validation.textFieldNotEmpty(fieldCost, labelError, "El campo es obligatorio.") 
-					&& Validation.textFieldIsDouble(fieldCost, labelError, "El valor introducido no es un número decimal válido.");			
+					&& Validation.textFieldIsDouble(fieldCost, labelError, "El valor introducido no es un n??mero decimal v??lido.");			
 			// o hace falta decir que en caso de la fecha va a hacer falta mucha chicha para verificar que la fecha es buena
-			// desentrañar el misterio de si Date o Calendar y entender que es mejor...
+			// desentra??ar el misterio de si Date o Calendar y entender que es mejor...
 			validIssueDate = Validation.textFieldNotEmpty(fieldIssueDate, labelError, "El campo es obligatorio.");	
 			validName = Validation.textFieldNotEmpty(fieldName, labelError, "El campo es obligatorio.");			
 			validRef = Validation.textFieldNotEmpty(fieldRef, labelError, "El campo es obligatorio.")
-					&& Validation.textFieldOnlyAlphaNumeric(fieldRef, labelError, "Solo se permiten carácteres alfanuméricos.");		
+					&& Validation.textFieldOnlyAlphaNumeric(fieldRef, labelError, "Solo se permiten car??cteres alfanum??ricos.");		
 			
 			if (validRef && validName && validIssueDate && validCost && validProductionMinutes) {
 				fieldRef.getStyleClass().remove("error");	
@@ -322,12 +323,12 @@ public class MainController {
 		disableActionButtons(false);
 		buttonCancel.requestFocus();
 		labelError.getStyleClass().add("yellow");
-		labelError.setText("¿Desea eliminar el producto seleccionado?");
+		labelError.setText("??Desea eliminar el producto seleccionado?");
 		System.out.println("Starting deletion.");		
 	}
 	
 	/**
-	 * <p>Actualización del contenido de la tableView para que muestre los datos de tableData.</p>
+	 * <p>Actualizaci??n del contenido de la tableView para que muestre los datos de tableData.</p>
 	 * <p>En principio esto sucede automaticamente ante las acciones add y remove sobre tableData.
 	 * Pero como al actualizar el producto dentro de tableData no se modifica nada de tableData propiamente dicho
 	 * creo que el listener no puede saber que ha habido un cambio. Con este hack conseguimos

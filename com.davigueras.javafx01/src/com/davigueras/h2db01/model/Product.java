@@ -1,4 +1,4 @@
-package model;
+package com.davigueras.h2db01.model;
 
 import java.sql.Date;
 
@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleDoubleProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
+@SuppressWarnings("unused")
 public class Product {
 	private SimpleIntegerProperty id;
 	private SimpleStringProperty ref;

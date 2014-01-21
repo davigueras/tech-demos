@@ -1,4 +1,4 @@
-package controller;
+package com.davigueras.javafx01.controller;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
