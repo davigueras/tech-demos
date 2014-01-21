@@ -1,4 +1,4 @@
-package com.davigueras.h2db01.model;
+package com.davigueras.javafx01.model;
 
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;

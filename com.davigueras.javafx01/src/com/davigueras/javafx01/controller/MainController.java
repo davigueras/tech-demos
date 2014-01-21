@@ -2,8 +2,8 @@ package com.davigueras.javafx01.controller;
 
 import java.sql.Date;
 
-import com.davigueras.h2db01.model.Product;
-import com.davigueras.h2db01.model.Validation;
+import com.davigueras.javafx01.model.Product;
+import com.davigueras.javafx01.model.Validation;
 
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
