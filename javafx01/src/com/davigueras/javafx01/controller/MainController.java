@@ -1,7 +1,5 @@
 package com.davigueras.javafx01.controller;
 
-import java.sql.Date;
-
 import com.davigueras.javafx01.model.Product;
 import com.davigueras.javafx01.model.Validation;
 

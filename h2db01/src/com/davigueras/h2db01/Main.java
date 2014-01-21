@@ -12,7 +12,7 @@ public class Main {
 		 * embedded y la url da un poco igual porque luego copias y pegas el fichero generado h2.db 
 		 * dentro (y incluyes en eclipse) de tu proyecto.
 		 * He creado via instrucciones sql el schema y la tabla con los campos.
-		 * Luego he a??adido algunos datos para que haya algo. 
+		 * Luego he anadido algunos datos para que haya algo. 
 		 */
 		
 		H2Connection connection = new H2Connection();
