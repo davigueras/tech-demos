@@ -1,0 +1,24 @@
+.error {
+	/*-fx-accent: #FF5555; esto hace que la seleccio sea roja tambien */
+    -fx-focus-color: #CC4444;
+    /*-fx-border-color: #CC4444; por algun motivo esto no se actualiza bian al quitar la clase, parece un glitch */
+    -fx-background-color: #EEBBBB;
+}
+
+.ok {
+    /*-fx-border-color: #11BB11;*/
+    -fx-focus-color: #11BB11;
+    -fx-background-color: #88DD88;
+}
+
+.red {
+	-fx-text-fill: #BB3333;
+}
+
+.yellow {
+	-fx-text-fill: #CCAA22;
+}
+
+.green {
+	-fx-text-fill: #11BB11;
+}
