@@ -10,3 +10,6 @@
 2014-01-22 00:44:19,143 INFO [main] c.d.h.Example3 [Example3.java:19] Entering application.
 2014-01-22 00:44:19,146 DEBUG [main] c.d.h.Example3Foo [Example3Foo.java:11] Did it again!
 2014-01-22 00:44:19,147 INFO [main] c.d.h.Example3 [Example3.java:23] Exiting application.
+2014-01-23 20:35:52,587 INFO [main] c.d.s.Example3 [Example3.java:19] Entering application.
+2014-01-23 20:35:52,594 DEBUG [main] c.d.s.Example3Foo [Example3Foo.java:11] Did it again!
+2014-01-23 20:35:52,594 INFO [main] c.d.s.Example3 [Example3.java:23] Exiting application.
