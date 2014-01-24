@@ -1,4 +1,4 @@
-package com.davigueras.h2hibernate02.controller;
+package com.davigueras.h2hibernate03.controller;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
