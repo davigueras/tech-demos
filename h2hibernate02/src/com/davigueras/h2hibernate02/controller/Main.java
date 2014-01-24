@@ -1,12 +1,14 @@
-package com.davigueras.h2hibernate01.controller;
+package com.davigueras.h2hibernate02.controller;
 
 import java.util.List;
 
-import com.davigueras.h2hibernate01.model.Contact;
-import com.davigueras.h2hibernate01.model.ContactDAO;
+import com.davigueras.h2hibernate02.model.Contact;
+import com.davigueras.h2hibernate02.model.ContactDAO;
 
 /* Este ejemplo muestra una clase basica mapeada con la base de datos mediante
- * ficheros xml de mapeo. */
+ * hibernate basadi en anotaciones, el anterior ejemplo era mediantr ficheros
+ * xml de mapeo. */
+
 
 public class Main {
 
