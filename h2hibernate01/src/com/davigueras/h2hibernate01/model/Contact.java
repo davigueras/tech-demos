@@ -23,10 +23,6 @@ public class Contact implements Serializable {
     public long getId() {
         return id;
     }
-
-    private void setId(long id) {
-        this.id = id;
-    }
     
     public String getName() {
         return name;

@@ -77,6 +77,7 @@ public class ContactDAO {
 	    return contact; 
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Contact> getContactsList() throws HibernateException { 
 	    List<Contact> contactsList = null;  
 	    
