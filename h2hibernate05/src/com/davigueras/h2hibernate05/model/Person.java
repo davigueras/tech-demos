@@ -1,4 +1,4 @@
-package com.davigueras.h2hibernate04.model;
+package com.davigueras.h2hibernate05.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,12 +22,8 @@ public class Person implements Serializable {
     private long id; 
     private String name;  
     
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) // uno a mucho unidireccional, solo person lo ve
+    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="person") // uno amuchos bidireccional, address ve su propietario
     private List<Address> addresses = new ArrayList<Address>(); 
-    
-    
-    //@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="persona") // uno amuchos bidireccional, coche ve su propietario
-    //private List<Coche> coches = new ArrayList<Coche>();
 
     public Person() { 
     }  
@@ -48,11 +44,11 @@ public class Person implements Serializable {
         this.name = name; 
     }  
     
-    public List getAddress() { 
+    public List<Address> getAddress() { 
         return addresses; 
     }  
 
-    public void setAddress(List addresses) { 
+    public void setAddress(List<Address> addresses) { 
         this.addresses = addresses; 
     }  
 
