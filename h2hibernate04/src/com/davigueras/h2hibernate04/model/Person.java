@@ -23,14 +23,12 @@ public class Person implements Serializable {
     private long id; 
     private String name;  
     
-    @OneToOne(cascade={CascadeType.PERSIST, CascadeType.REMOVE}) // uno a uno unidireccioal
-    private Address address;  
-    
     @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER) // uno a mucho unidireccional, solo person lo ve
-    private List<Libro> libros = new ArrayList<Libro>();
+    private List<Address> addresses = new ArrayList<Address>(); 
     
-    @OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="persona") // uno amuchos bidireccional, coche ve su propietario
-    private List<Coche> coches = new ArrayList<Coche>();
+    
+    //@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER, mappedBy="persona") // uno amuchos bidireccional, coche ve su propietario
+    //private List<Coche> coches = new ArrayList<Coche>();
 
     public Person() { 
     }  
@@ -51,42 +49,18 @@ public class Person implements Serializable {
         this.name = name; 
     }  
     
-    public Address getAddress() { 
-        return address; 
+    public List getAddress() { 
+        return addresses; 
     }  
 
-    public void setAddress(Address address) { 
-        this.address = address; 
-    }  
-    
-    public List getLibros() 
-    { 
-        return libros; 
+    public void setAddress(List addresses) { 
+        this.addresses = addresses; 
     }  
 
-    public void setLibros(List libros) 
+    public void addAddress(Address address) 
     { 
-        this.libros = libros; 
-    }  
-
-    public void addLibro(Libro libro) 
-    { 
-        this.libros.add(libro); 
+        this.addresses.add(address); 
     } 
     
-    public List getCoches() 
-    { 
-        return coches; 
-    }  
 
-    public void setCoches(List coches) 
-    { 
-        this.coches = coches; 
-    }  
-
-    
-    public void addCoche(Coche coche)
-    {
-        this.coches.add(coche);
-    }
 }

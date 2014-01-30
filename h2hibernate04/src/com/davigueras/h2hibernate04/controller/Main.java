@@ -3,14 +3,11 @@ package com.davigueras.h2hibernate04.controller;
 import org.hibernate.Session;
 
 import com.davigueras.h2hibernate04.model.Address;
-import com.davigueras.h2hibernate04.model.Coche;
-import com.davigueras.h2hibernate04.model.Libro;
 import com.davigueras.h2hibernate04.model.Person;
 
 /* Este ejemplo muestra una clase basica mapeada con la base de datos mediante
- * hibernate basadi en anotaciones, Ademas hay dos objetos mapeados con una
- * relacion de uno a uno entre si, y con borrado en cascada y demas. A??ado 
- * tambien otra relacio uno a muchos */
+ * hibernate basado en anotaciones, tenemos dos objetos mapeados con una relacion
+ * de uno a muchos unidireccional, con lo cual solo uno conoce sla relacion */
 
 public class Main {
 	
@@ -30,34 +27,8 @@ public class Main {
 	    address2.setStreet("Calle 2"); 
 	    address2.setPostalCode("54321");  
 	
-	    person1.setAddress(address1); 
-	    person1.setAddress(address2);  
-	    
-	    
-	    
-	    
-	    Libro libro1 = new Libro(); 
-	    libro1.setTitulo("20000 leguas de viaje submarino");  
-
-	    Libro libro2 = new Libro(); 
-	    libro2.setTitulo("La maquina del tiempo");  
-
- 
-	    person1.addLibro(libro1); 
-	    person1.addLibro(libro2);   
-	    
-	    
-	    
-	    Coche coche1 = new Coche(); 
-	    coche1.setTitulo("Ferrari");  
-
-	    Coche coche2 = new Coche(); 
-	    coche2.setTitulo("Ford");  
-
- 
-	    person1.addCoche(coche1); 
-	    person1.addCoche(coche2);   
-	    
+	    person2.addAddress(address1); 
+	    person2.addAddress(address2);  
 	
 	    Session session = HibernateUtil.getSessionFactory().openSession();   
 	
@@ -83,7 +54,7 @@ public class Main {
 	    session = HibernateUtil.getSessionFactory().openSession(); 
 	    session.beginTransaction();  
 	
-	    session.delete(person2);  
+	    session.delete(person1);  
 	
 	    session.getTransaction().commit(); 
 	    session.close(); 

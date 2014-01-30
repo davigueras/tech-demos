@@ -18,9 +18,7 @@
 		<property name="hbm2ddl.auto">create-drop</property>
 		
 		<mapping class="com.davigueras.h2hibernate04.model.Person" /> 
-		<mapping class="com.davigueras.h2hibernate04.model.Libro" /> 
 		<mapping class="com.davigueras.h2hibernate04.model.Address" />
-	    <mapping class="com.davigueras.h2hibernate04.model.Coche" />
 		
     </session-factory>
 </hibernate-configuration>
