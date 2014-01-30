@@ -49,12 +49,12 @@ public class Main {
 	    session.getTransaction().commit(); 
 	    session.close();   
 	
-	    /*En la segunda sesion eliminamos el objeto person1, 
+	    /*En la segunda sesion eliminamos el objeto person2, 
 	    la direccion1 sera borrada en cascada*/ 
 	    session = HibernateUtil.getSessionFactory().openSession(); 
 	    session.beginTransaction();  
 	
-	    session.delete(person1);  
+	    session.delete(person2);  
 	
 	    session.getTransaction().commit(); 
 	    session.close(); 
