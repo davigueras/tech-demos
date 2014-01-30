@@ -7,7 +7,8 @@ import com.davigueras.h2hibernate03.model.Address;
 
 /* Este ejemplo muestra una clase basica mapeada con la base de datos mediante
  * hibernate basadi en anotaciones, Ademas hay dos objetos mapeados con una
- * relacion de uno a uno entre si, y con borrado en cascada y demas. */
+ * relacion de uno a uno unidireccional (solo persona ve la relacion), y con 
+ * borrado en cascada y demas. */
 
 public class Main {
 	
