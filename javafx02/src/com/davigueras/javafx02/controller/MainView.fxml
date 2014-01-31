@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="768.0" prefWidth="1024.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/2.2" fx:controller="com.davigueras.javafx02.controller.MainController">
+  <!-- TODO Add Nodes -->
+  <children>
+    <SplitPane dividerPositions="0.27299412915851273" focusTraversable="true" prefHeight="768.0" prefWidth="1024.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <items>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="766.0" prefWidth="250.0">
+          <children>
+            <TreeView fx:id="treeView" editable="true" prefHeight="232.0" prefWidth="231.0" AnchorPane.bottomAnchor="448.0" AnchorPane.leftAnchor="22.5" AnchorPane.rightAnchor="22.5" AnchorPane.topAnchor="86.0" />
+            <Label fx:id="label" layoutX="90.0" layoutY="383.0" text="Label" />
+          </children>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+          <children>
+            <Pane fx:id="sp1" prefHeight="766.0" prefWidth="740.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <Label id="label2" fx:id="label1" text="1111111111" />
+              </children>
+            </Pane>
+            <Pane fx:id="sp2" prefHeight="766.0" prefWidth="740.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <children>
+                <Label fx:id="label2" text="222222222222" />
+              </children>
+            </Pane>
+          </children>
+        </AnchorPane>
+      </items>
+    </SplitPane>
+  </children>
+</AnchorPane>
