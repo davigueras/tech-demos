@@ -1,22 +1,33 @@
 package com.davigueras.jfxh2h02.controller;
 	
-import javafx.application.Application;
-import javafx.stage.Stage;
-import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+
+/* En esta aplicación voy a intentar desarrollar los siguientes puntos:
+ * - Interfaz que permita la visualizacion de distintas capas
+ * - Mantenimiento de almenos tres clases
+ * - Look up efectivo de otras clases cuando creando una relacionada
+ * - Visualizacion condicionada de las otras clases segun seleccion
+ *   de un registro concreto de una clase determinada
+ * - Generación introductoria y sencilla de informes */
 
 public class Main extends Application {
+	
 	@Override
 	public void start(Stage primaryStage) {
 		try {
-			BorderPane root = new BorderPane();
-			Scene scene = new Scene(root,400,400);
-			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+			AnchorPane page = (AnchorPane) FXMLLoader.load(Main.class.getResource("MainView.fxml"));
+			Scene scene = new Scene(page);
 			primaryStage.setScene(scene);
 			primaryStage.show();
 		} catch(Exception e) {
-			e.printStackTrace();
+			Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, e);
 		}
 	}
 	
