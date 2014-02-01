@@ -1,0 +1,6 @@
+02-01 17:51:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "BOOK" not found; SQL statement:
+alter table Book drop constraint FK_2krfr0tkkuxiv7j794sgfv5j1 if exists [42102-175]
+02-01 17:51:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "BOOK" not found; SQL statement:
+alter table Book drop constraint FK_mi1mvgct3kh7oyxn9iwy4n59m if exists [42102-175]
