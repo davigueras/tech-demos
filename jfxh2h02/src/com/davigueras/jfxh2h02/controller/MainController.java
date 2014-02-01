@@ -15,7 +15,11 @@ import javafx.scene.layout.Pane;
 import javafx.util.Callback;
 
 import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
 import java.util.ResourceBundle;
+
+import org.hibernate.Session;
 
 import com.davigueras.jfxh2h02.model.Author;
 import com.davigueras.jfxh2h02.model.Book;
@@ -82,36 +86,49 @@ public class MainController {
     @FXML
     void initialize() {
     	
-    	loadTestData();
+    	// cargamos de bd o datos de prueba
     	
-    	listView.setItems(menu);
-    	listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
-
-    		@Override
-    	    public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
-    			
-				pane1.setVisible(false);
-				pane2.setVisible(false);
-				pane3.setVisible(false);
-				pane4.setVisible(false);
-    			
-    			switch ((String) newValue) {
-    			case "Libros":
-    				pane1.setVisible(true);
-    				break;
-    			case "Autores":
-    				pane2.setVisible(true);
-    				break;
-    			case "Editoriales":
-    				pane3.setVisible(true);
-    				break;
-    			case "Informes":
-    				pane4.setVisible(true);
-    				break;
-    			}
+    	if (true) {
+    		
+    	    List<Book> books = null;
+    	    List<Author> authors = null;
+    	    List<Publisher> publishers= null;
+    	    
+    	    Session session = null;
+    	    try { 
+    			session = HibernateUtil.getSessionFactory().openSession(); 
+    			books = session.createQuery("from Book").list(); // Esta query es creada en HQL (hibernate query language)
+    			authors = session.createQuery("from Author").list(); // Esta query es creada en HQL (hibernate query language)
+    			publishers = session.createQuery("from Publisher").list(); // Esta query es creada en HQL (hibernate query language)
+    	    } finally { 
+    	        session.close(); 
+    	    }  
+    	    
+    	    authors.iterator();
+    	    for (Author author:authors) {
+    	    	authorsData.add(author);
+    	    }
+    	    publishers.iterator();
+    	    for (Publisher publisher:publishers) {
+    	    	publishersData.add(publisher);
+    	    }    	    
+    	    books.iterator();
+    	    for (Book book:books) {
+    	    	booksData.add(book);
     	    }
 
-    	});
+    	    List<Book> query = authorsData.get(1).getBooks();
+    	    query.iterator();
+    	    for (Book book:query) {
+    	    	System.out.println(book.getTitle());
+    	    }
+
+    	} else {
+    		loadTestData();
+    	}
+    	
+    	
+    	// Capa de datos
     	
     	bookTableView.setItems(booksData);	
 		bookId.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
@@ -153,32 +170,97 @@ public class MainController {
 		publisherId.setCellValueFactory(new PropertyValueFactory<Publisher, Integer>("id"));
 		publisherName.setCellValueFactory(new PropertyValueFactory<Publisher, String>("name"));
 		publisherCity.setCellValueFactory(new PropertyValueFactory<Publisher, String>("city"));
+    	
+		// Vistas
+		
+    	listView.setItems(menu);
+    	listView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+
+    		@Override
+    	    public void changed(ObservableValue<?> observable, Object oldValue, Object newValue) {
+    			
+				pane1.setVisible(false);
+				pane2.setVisible(false);
+				pane3.setVisible(false);
+				pane4.setVisible(false);
+    			
+    			switch ((String) newValue) {
+    			case "Libros":
+    				pane1.setVisible(true);
+    				break;
+    			case "Autores":
+    				pane2.setVisible(true);
+    				break;
+    			case "Editoriales":
+    				pane3.setVisible(true);
+    				break;
+    			case "Informes":
+    				pane4.setVisible(true);
+    				break;
+    			}
+    	    }
+
+    	});
 
     }
 
 	private void loadTestData() {
-		Author autor1 = new Author(1, "Sebastien 1", "France");
-		Author autor2 = new Author(2, "Grumhilda 2", "Germany");	
-		Author autor3 = new Author(3, "Tolkien 3", "UK");
-		Author autor4 = new Author(4, "Martin 4", "USA");
+
+		Session session;
+		
+		Author autor1 = new Author("Sebastien 1", "France");
+		Author autor2 = new Author("Grumhilda 2", "Germany");	
+		Author autor3 = new Author("Tolkien 3", "UK");
+		Author autor4 = new Author("Martin 4", "USA");
+		
+		Publisher publisher1 = new Publisher("Letra capital", "Barcelona");
+		Publisher publisher2 = new Publisher("La letra verda", "Madrid");
+		Publisher publisher3 = new Publisher("La pluma roja", "Bilbao");
+		
+	    session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();  
+		
+	    session.persist(autor1); 
+	    session.persist(autor2); 
+	    session.persist(autor3); 
+	    session.persist(autor4);
+	    
+	    session.persist(publisher1); 
+	    session.persist(publisher2); 
+	    session.persist(publisher3); 
+	    
+	    session.getTransaction().commit(); 
+	    session.close(); 
+		
+	    Book book1 = new Book("Libro 1", autor2, publisher3, "Genero A");
+	    Book book2 = new Book("Libro 2", autor2, publisher2, "Genero A");
+	    Book book3 = new Book("Libro 3", autor3, publisher3, "Genero B");		
+		Book book4 = new Book("Libro 4", autor4, publisher3, "Genero B");
+		Book book5 = new Book("Libro 5", autor2, publisher1, "Genero C");
+		Book book6 = new Book("Libro 6", autor4, publisher1, "Genero C");
+		
+	    session = HibernateUtil.getSessionFactory().openSession();
+	    session.beginTransaction();  
+	    
+	    session.persist(book1);
+	    session.persist(book2);
+	    session.persist(book3);
+	    session.persist(book4); 
+	    session.persist(book5); 
+	    session.persist(book6); 
+	    
+	    session.getTransaction().commit(); 
+	    session.close(); 
+	    
 		authorsData.add(autor1);		
 		authorsData.add(autor2);		
 		authorsData.add(autor3);		
-		authorsData.add(autor4);		
+		authorsData.add(autor4);
 		
-		Publisher publisher1 = new Publisher(1, "Letra capital", "Barcelona");
-		Publisher publisher2 = new Publisher(2, "La letra verda", "Madrid");
-		Publisher publisher3 = new Publisher(3, "La pluma roja", "Bilbao");
 		publishersData.add(publisher1);		
 		publishersData.add(publisher2);		
-		publishersData.add(publisher3);	
-		
-		Book book1 = new Book(1, "Libro 1", autor2, publisher3, "Genero A");
-		Book book2 = new Book(2, "Libro 2", autor2, publisher2, "Genero A");
-		Book book3 = new Book(3, "Libro 3", autor3, publisher3, "Genero B");
-		Book book4 = new Book(4, "Libro 4", autor4, publisher3, "Genero B");
-		Book book5 = new Book(5, "Libro 5", autor2, publisher1, "Genero C");
-		Book book6 = new Book(6, "Libro 6", autor4, publisher1, "Genero C");
+		publishersData.add(publisher3);
+	    
 		booksData.add(book1);
 		booksData.add(book2);
 		booksData.add(book3);
