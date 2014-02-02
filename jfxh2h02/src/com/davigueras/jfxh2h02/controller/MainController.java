@@ -67,6 +67,17 @@ public class MainController {
     private TableView<Author> authorTableView;
     
     @FXML
+    private TableColumn<Book, String> authorBookGenre;
+    @FXML
+    private TableColumn<Book, Integer> authorBookId;
+    @FXML
+    private TableColumn<Book, String> authorBookPublisher;
+    @FXML
+    private TableColumn<Book, String> authorBookTitle;
+    @FXML
+    private TableView<Book> authorBooksTableView;
+    
+    @FXML
     private TableColumn<Publisher, String> publisherName;
     @FXML
     private TableColumn<Publisher, String> publisherCity;
@@ -81,6 +92,7 @@ public class MainController {
   	
   	ObservableList<Book> booksData = FXCollections.observableArrayList();
   	ObservableList<Author> authorsData = FXCollections.observableArrayList();
+  	ObservableList<Book> authorBooksData = FXCollections.observableArrayList();
   	ObservableList<Publisher> publishersData = FXCollections.observableArrayList();
     
     @FXML
@@ -150,8 +162,7 @@ public class MainController {
 		});  
 		
 		/* mas de lo mismo */
-		
-		bookPublisher.setCellValueFactory(new PropertyValueFactory<Book, String>("publisher"));
+
 		bookPublisher.setCellValueFactory(new Callback<CellDataFeatures<Book, String>, ObservableValue<String>>() {  
 		     @Override  
 		     public ObservableValue<String> call(CellDataFeatures<Book, String> data) {  
@@ -166,10 +177,24 @@ public class MainController {
 		authorName.setCellValueFactory(new PropertyValueFactory<Author, String>("name"));
 		authorCountry.setCellValueFactory(new PropertyValueFactory<Author, String>("country"));
 		
-    	publisherTableView.setItems(publishersData);	
+    	authorBooksTableView.setItems(authorBooksData);
+		authorBookId.setCellValueFactory(new PropertyValueFactory<Book, Integer>("id"));
+		authorBookTitle.setCellValueFactory(new PropertyValueFactory<Book, String>("title"));
+		authorBookPublisher.setCellValueFactory(new Callback<CellDataFeatures<Book, String>, ObservableValue<String>>() {  
+		     @Override  
+		     public ObservableValue<String> call(CellDataFeatures<Book, String> data) {  
+		          return new SimpleStringProperty(data.getValue().getPublisher().getName());  
+		     }  
+		}); 
+		authorBookGenre.setCellValueFactory(new PropertyValueFactory<Book, String>("genre"));
+		
+		publisherTableView.setItems(publishersData);	
 		publisherId.setCellValueFactory(new PropertyValueFactory<Publisher, Integer>("id"));
 		publisherName.setCellValueFactory(new PropertyValueFactory<Publisher, String>("name"));
 		publisherCity.setCellValueFactory(new PropertyValueFactory<Publisher, String>("city"));
+		
+		
+		
     	
 		// Vistas
 		
@@ -201,8 +226,34 @@ public class MainController {
     	    }
 
     	});
+    	
+    	authorTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Object>() {
+			public void changed(ObservableValue<?> observableValue, Object oldValue, Object newValue) {
+				
+				List<Book> query = null;
+				int authorId = authorsData.get(authorsData.indexOf(newValue)).getId();
+				authorBooksData.clear();
+				if (authorsData.indexOf(newValue) > -1) {
+		    	    Session session = null;
+		    	    try { 
+		    			session = HibernateUtil.getSessionFactory().openSession(); 
+		    			query = session.createQuery("from Book where author.id = " + authorId).list(); 
+		    	    } finally { 
+		    	        session.close(); 
+		    	    }  
+		    	    
+		    	    query.iterator();
+		    	    for (Book book:query) {
+		    	    	authorBooksData.add(book);
+		    	    }
+		    	    
+				}
+			}
+		});
 
     }
+    
+    
 
 	private void loadTestData() {
 
