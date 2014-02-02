@@ -2,6 +2,7 @@
 
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
@@ -21,9 +22,9 @@
                 </AnchorPane>
                 <AnchorPane minHeight="-1.0" minWidth="-1.0" prefHeight="688.0" prefWidth="824.0">
                   <children>
-                    <Pane fx:id="pane1" prefHeight="684.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Pane fx:id="pane1" prefHeight="684.0" prefWidth="762.0" style="-fx-background-color: #EEEEEE;&#10;" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <TitledPane animated="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" text="Libros">
+                        <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Libros">
                           <content>
                             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -39,12 +40,15 @@
                               </children>
                             </AnchorPane>
                           </content>
+                          <effect>
+                            <Shadow />
+                          </effect>
                         </TitledPane>
                       </children>
                     </Pane>
-                    <Pane fx:id="pane2" prefHeight="684.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Pane fx:id="pane2" prefHeight="684.0" prefWidth="762.0" style="-fx-background-color: #EEEEEE;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <TitledPane animated="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" text="Autor">
+                        <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;" text="Autor">
                           <content>
                             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -58,8 +62,15 @@
                               </children>
                             </AnchorPane>
                           </content>
+                          <effect>
+                            <ColorAdjust>
+                              <input>
+                                <Shadow blurType="GAUSSIAN" />
+                              </input>
+                            </ColorAdjust>
+                          </effect>
                         </TitledPane>
-                        <TitledPane animated="false" layoutX="15.0" layoutY="453.0" prefHeight="221.0" prefWidth="795.0" text="Libros del Autor">
+                        <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="453.0" prefHeight="221.0" prefWidth="795.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);&#10;" text="Libros del Autor">
                           <content>
                             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -74,12 +85,15 @@
                               </children>
                             </AnchorPane>
                           </content>
+                          <effect>
+                            <Shadow />
+                          </effect>
                         </TitledPane>
                       </children>
                     </Pane>
-                    <Pane fx:id="pane3" prefHeight="684.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <Pane fx:id="pane3" prefHeight="684.0" prefWidth="762.0" style="-fx-background-color: #EEEEEE;" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                       <children>
-                        <TitledPane animated="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" text="Editorial">
+                        <TitledPane animated="false" collapsible="false" layoutX="15.0" layoutY="15.0" prefHeight="421.0" prefWidth="795.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);" text="Editorial">
                           <content>
                             <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                               <children>
@@ -93,10 +107,13 @@
                               </children>
                             </AnchorPane>
                           </content>
+                          <effect>
+                            <Shadow />
+                          </effect>
                         </TitledPane>
                       </children>
                     </Pane>
-                    <Pane fx:id="pane4" prefHeight="684.0" prefWidth="762.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                    <Pane fx:id="pane4" prefHeight="684.0" prefWidth="762.0" style="-fx-background-color: #EEEEEE;" visible="true" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                   </children>
                 </AnchorPane>
               </children>
